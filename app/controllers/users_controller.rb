@@ -18,6 +18,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def follows
+    @user = User.find(params[:follow_id])
+    @following = current_user.follow(@user)
+  end
+
+  def followers
+    @user = User.find(params[:follow_id])
+    @followers = current_user.follow(@user)
+  end
+
   def create
     @user = current_user
     @users = User.all
